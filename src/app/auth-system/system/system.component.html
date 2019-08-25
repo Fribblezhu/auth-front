@@ -1,0 +1,60 @@
+<nz-layout class="full-content" >
+    <nz-content style="margin-bottom: 0">
+        <div nz-row >
+            <div nz-col [nzSpan]="16">
+                <div nz-row class = "button-group">
+                    <button nz-button nzType="primary" nzGhost (click)="create()">新增</button>
+                    <button nz-button nzType="primary" nzGhost (click)="modify()">修改</button>
+                    <button nz-button nzType="danger" nzGhost (click)="delete()">删除</button>
+                </div>
+            </div>
+            <div nz-col [nzSpan]="8">
+                <nz-input-group [nzSuffix]="suffixIconSearch">
+                    <input type="text" nz-input placeholder="input search text" />
+                </nz-input-group>
+                <ng-template #suffixIconSearch>
+                    <i nz-icon type="search"></i>
+                </ng-template>
+            </div>
+        </div>
+        <nz-table #codeTable [nzShowPagination]="false" [nzData]="page.content"
+                  [nzFrontPagination]="false" [nzLoading]="loading">
+            <thead>
+            <tr>
+                <th style="display: none">ID</th>
+                <th nzShowCheckbox
+                    [(nzChecked)]="isAllDisplayDataChecked"
+                    [nzIndeterminate]="isIndeterminate"
+                    (nzCheckedChange)="checkAll($event)">
+                </th>
+                <th>名称</th>
+                <th>编码值</th>
+                <th>所属类别</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let item of codeTable.data" >
+                <td style="display: none">{{item.id}}</td>
+                <td
+                        nzShowCheckbox
+                        [(nzChecked)]="mapOfCheckedId[item.id]"
+                        (nzCheckedChange)="refreshStatus()"
+                ></td>
+                <td>{{item.name}}</td>
+                <td>{{item.code}}</td>
+                <td>
+                    <div nz-row>
+                        <span *ngFor="let c of item.codecList">{{c.label}}</span>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </nz-table>
+    </nz-content>
+    <nz-footer class = "page-footer">
+        <nz-pagination #pageFooter (nzPageIndexChange)="queryPage()"
+                       [nzPageIndex]="pageParameter.pageIndex" [nzPageSize]="pageParameter.pageSize" [nzTotal]="page.totalElements">
+        </nz-pagination>
+    </nz-footer>
+</nz-layout>
+<router-outlet></router-outlet>

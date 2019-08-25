@@ -1,0 +1,15 @@
+＃ 路由介绍
+  -> RouteModule                路由模块
+  -> Routes：　Route[]           链路数组
+  -> Route                      链路数据模式
+
+
+#　两个静态方法
+  -> forRoot(Routes[])          用于根模块
+  -> forChild(Routes[])         用于子模块
+
+#  子路由使用方式
+  ->  1.在根路由的Routes中使用: loadChildren: '${path}#${ModuleName}'
+  ->  2.在子模块中创建自己的　Routes[]
+  ->  3.在子模块中import RouteModule.forChild(Routes)
+

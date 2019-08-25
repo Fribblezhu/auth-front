@@ -1,0 +1,23 @@
+<div [@openClose]="!isSecondMenuOpen ? 'open' : 'closed'" class ="menu-first">
+    <nz-spin *ngIf="!firstMenuList" nzTip="Loading..."></nz-spin>
+    <ul *ngIf="firstMenuList" nz-menu [nzMode]="'inline'" nzTheme='light'>
+        <li *ngFor="let menu of firstMenuList" nz-menu-item>
+            <span title>
+                <span (click)="goSecondMenu(menu.url)">{{menu.name}}</span>
+            </span>
+        </li>
+
+    </ul>
+</div>
+<div [@openClose]="isSecondMenuOpen ? 'open' : 'closed'" class ="full-content">
+    <div class="menu-second">
+        <div nz-row>
+            <div nz-col [nzSpan]="8">
+                <span class = "back-first" (click)="goFirstMenu()"><i nz-icon type="left-circle" ></i>返回</span>
+            </div>
+            <div nz-col [nzPush]="8" [nzSpan]="10">
+                <span class="module-name">{{moduleName}}</span>
+            </div>
+        </div>
+    </div>
+</div>

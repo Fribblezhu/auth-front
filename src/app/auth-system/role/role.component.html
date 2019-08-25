@@ -1,0 +1,56 @@
+<nz-spin *ngIf="!page" nzTip="Loading..."></nz-spin>
+<div *ngIf="page"  class = "full-content">
+    <div nz-row >
+        <div nz-col [nzSpan]="16">
+            <div nz-row class = "button-group">
+                <button nz-button nzType="primary" nzGhost (click)="create()">新增</button>
+                <button nz-button nzType="primary" nzGhost (click)="modify()">修改</button>
+                <button nz-button nzType="dashed" (click)="freeze()">冻结</button>
+                <button nz-button nzType="danger" nzGhost (click)="delete()">删除</button>
+            </div>
+        </div>
+        <div nz-col [nzSpan]="8">
+            <nz-input-group [nzSuffix]="suffixIconSearch">
+                <input type="text" nz-input placeholder="input search text" />
+            </nz-input-group>
+            <ng-template #suffixIconSearch>
+                <i nz-icon type="search"></i>
+            </ng-template>
+        </div>
+    </div>
+    <nz-table #merberTable
+              nzHideOnSinglePage="true"
+              [nzLoading]="loading"
+              [nzTotal]="page.totalElements"
+              [nzPageIndex]="param.pageIndex"
+              [nzPageSize]="param.pageSize"
+              [nzData] = "page.content"
+              (nzPageIndexChange) = "queryPage()">
+        <thead>
+        <tr>
+            <th style="display: none">ID</th>
+            <th nzShowCheckbox
+                [(nzChecked)]="isAllDisplayDataChecked"
+                [nzIndeterminate]="isIndeterminate"
+                (nzCheckedChange)="checkAll($event)"
+            ></th>
+            <th>名称</th>
+            <th>编码值</th>
+            <th>状态</th>
+            <th>所属系统</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let item of page.content">
+            <td style="display: none">{{item.id}}</td>
+            <td nzShowCheckbox
+                [(nzChecked)]="mapOfCheckedId[item.id]"
+            ></td>
+            <td>{{item.name}}</td>
+            <td>{{item.code}}</td>
+            <td>{{item.status}}</td>
+            <td>{{item.systemId}}</td>
+        </tr>
+        </tbody>
+    </nz-table>
+</div>

@@ -1,0 +1,23 @@
+/* You can add global styles to this file, and also import other style files */
+.full-content {
+    height: 99.5%;
+    width: 99.5%;
+    padding: 0.5%;
+}
+.wrapper-content {
+    margin: 0.5em;
+}
+
+.button-group button{
+    margin-left: 2px;
+    margin-bottom: 2px;
+}
+
+.page-footer {
+    background-color: #fff;
+ }
+
+/*   覆盖ant design css  */
+.ant-calendar-picker {
+    width:100%;
+}

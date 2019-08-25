@@ -1,0 +1,7 @@
+
+
+#阴影效果
+box-shadow: 2px 4px 6px #000;
+
+#圆角
+border-radius：　5px

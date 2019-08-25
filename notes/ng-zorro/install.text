@@ -1,0 +1,7 @@
+# you should install nodejs and angularcli first
+
+
+# 添加ng-zorro库
+ng add ng-zorro-antd
+
+

@@ -1,0 +1,19 @@
+<nz-modal [(nzVisible)]="isVisible" [nzTitle]="title" [nzFooter]="codeModalFooter" (nzOnCancel)="closeModal()">
+    <nz-spin *ngIf="isLoading" nzTip="Loading..."></nz-spin>
+    <form *ngIf="!isLoading" nz-form [formGroup] = 'form' >
+        <nz-form-item>
+            <nz-form-label nzRequired ngFor="codecId">选择类型</nz-form-label>
+            <nz-form-control>
+                <nz-select nzMode="tags" formControlName="codecId" id = "codecId"  [(ngModel)]="listOfSelected" >
+                    <nz-option *ngFor="let item of codec" [nzValue]="item.id" [nzLabel]="item.name"></nz-option>
+                </nz-select>
+            </nz-form-control>
+        </nz-form-item>
+    </form>
+    <ng-template #codeModalFooter>
+        <div nz-row class = "button-group">
+            <button nz-button nzType="primary" nzGhost (click)="closeModal()">取消</button>
+            <button nz-button nzType="primary" nzGhost [nzLoading]="isSubmitLoading" (click)="submit()">提交</button>
+        </div>
+    </ng-template>
+</nz-modal>

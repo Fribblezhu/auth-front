@@ -1,0 +1,20 @@
+<div class = "mine-avatar">
+  <div *ngIf="hasLogin">
+    <nz-dropdown>
+      <a nz-dropdown>
+        <nz-avatar [nzText]="text" [nzSize]="60"  style="vertical-align: middle;"></nz-avatar>
+      </a>
+      <ul nz-menu nzSelectable>
+        <li nz-menu-item>
+          <a (click)="directToBlog()">我的博客</a>
+        </li>
+        <li nz-menu-item>
+          <a (click)="logout()">注销</a>
+        </li>
+      </ul>
+    </nz-dropdown>
+  </div>
+  <div *ngIf="!hasLogin">
+    <nz-avatar nzText="登录" [nzSize]="60" (click)="login()" style="vertical-align: middle; cursor: pointer; "></nz-avatar>
+  </div>
+</div>

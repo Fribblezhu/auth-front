@@ -1,0 +1,14 @@
+# 安装依赖包
+sudo apt-get install python-software-properties
+
+# 安装PPA
+curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
+
+# 安装nodejs
+sudo apt-get install -y nodejs
+
+# 设置npm仓库
+sudo npm install -g nrm
+
+# 设置npm默认仓库
+nrm use taobao

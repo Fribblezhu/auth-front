@@ -1,0 +1,7 @@
+<div [dynamicStyle]="style.wrapper">
+  <ul class="list-unstyled">
+    <div *ngFor="let toast of toasts.reverse()" [dynamicStyle]="style.list">
+      <div [dynamicStyle]="toast.styles">{{toast.message}}</div>
+    </div>
+  </ul>
+</div>

@@ -1,0 +1,40 @@
+<div class ="login-content">
+  <div class = "top-div">
+    <div class = "owel-div">
+      <div style="width: 165px; height: 96px; position: absolute;">
+        <div class="tou"></div>
+        <div class="initial_left_hand"  *ngIf = "!handing"></div>
+        <div class="initial_right_hand" *ngIf = "!handing"></div>
+        <div class="left_hand"  *ngIf = "handing"></div>
+        <div class="right_hand" *ngIf = "handing"></div>
+      </div>
+      <form nz-form [formGroup]="loginForm" class="login-form" (ngSubmit)="login()">
+        <nz-form-item>
+          <nz-form-control>
+            <nz-input-group nzPrefixIcon="anticon anticon-user">
+              <input type="text" class = "ipt" nz-input  formControlName="username" placeholder="username">
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-control>
+            <nz-input-group nzPrefixIcon="anticon anticon-lock a" >
+              <input nz-input class ="ipt" type="password" (focus)="focus()" (blur)="blur()" formControlName="password" placeholder="password">
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-control>
+            <label nz-checkbox formControlName="rememberMe">
+              <span>Remember me</span>
+            </label>
+            <a class="login-form-forgot login-form-forgot">Forgot password?</a>
+            <button nz-button class="login-form-button" [nzType]="'primary'">Log in</button>
+            Or
+            <a href="">register now!</a>
+          </nz-form-control>
+        </nz-form-item>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,29 @@
+<nz-modal [(nzVisible)]="isVisible" [nzTitle]="title" [nzFooter]="codeModalFooter" (nzOnCancel)="closeModal()">
+    <nz-spin *ngIf="isLoading" nzTip="Loading..."></nz-spin>
+    <form *ngIf="!isLoading" nz-form [formGroup] = 'form' >
+        <nz-form-item>
+            <nz-form-label nzRequired ngFor="name">分类名称</nz-form-label>
+            <nz-form-control>
+                <input nz-input [(ngModel)]="currentCode.name" formControlName="name" id="name" />
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-label nzRequired ngFor="code">分类编码</nz-form-label>
+            <nz-form-control>
+                <input nz-input [(ngModel)]="currentCode.code" formControlName="code" id="code" />
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-label ngFor="description">描述</nz-form-label>
+            <nz-form-control>
+                <textarea nz-input rows="4"  [(ngModel)]="currentCode.description" formControlName="description" id="description" ></textarea>
+            </nz-form-control>
+        </nz-form-item>
+    </form>
+    <ng-template #codeModalFooter>
+        <div nz-row class = "button-group">
+            <button nz-button nzType="primary" nzGhost (click)="closeModal()">取消</button>
+            <button nz-button nzType="primary" nzGhost [nzLoading]="isSubmitLoading" (click)="submit()">提交</button>
+        </div>
+    </ng-template>
+</nz-modal>

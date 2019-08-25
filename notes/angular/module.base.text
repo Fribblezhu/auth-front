@@ -1,0 +1,21 @@
+1.用法： 在类上使用@NgModule注解，并配置其属性
+@NgModel {
+  declarations: [],
+  imports: [],
+  exports: [],
+  providers: [],
+  bootstrap: []
+}
+2.功能： 使一个类变为模块
+3.属性：
+  declarations： 声明该模块拥有哪些组件
+  imports： 声明该模块使用的其他模块
+  exports： 声明该模块可以为其他模块提供哪些组件
+  providers: 声明该模块需要注入哪些服务
+4.注意
+  模块中使用imports并不是声明子模块，所有在各个模块中都要声明全部的依赖模块。
+5.angular基础模块
+
+  CommonModule: 不引入会导致div标签解析angular指令错误
+  FormModule： 不引入会导致form标签解析错误
+  ReactiveFormsModule： 不引入会导致form表单submit动态提交报错
